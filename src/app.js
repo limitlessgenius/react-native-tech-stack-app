@@ -17,7 +17,11 @@ const App = () => {
 
 export default App
 
-//provider connects store to react
+//connects react app to redux state / store 
+//creates react store out of all redux app state
+//connects to redux state on the react end
+//wraps react app, and sets store to connect to the whole redux app state.
+
 
 
 
