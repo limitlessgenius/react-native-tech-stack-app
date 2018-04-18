@@ -16,19 +16,21 @@ class LibraryList extends Component {
 	}
 
 	libraryItem({item}) {
+
+		const { textTitleStyle, textDescriptionStyle } = styles
 		return (
 
-			<Card>
+			<View>
 
 				<CardSection>
-					<Text>{item.title}</Text>
+					<Text style={textTitleStyle}>{item.title}</Text>
 				</CardSection>
 
 				<CardSection>
-					<Text>{item.description}</Text>
+					<Text style={textDescriptionStyle}>{item.description}</Text>
 				</CardSection>
 				
-			</Card>
+			</View>
 		)
 	}
 
@@ -47,6 +49,16 @@ class LibraryList extends Component {
 const mapStateToProps = state => {
 	// console.log('STATE', state)
 	return { libraries: state.libraries }
+}
+
+const styles = {
+	textTitleStyle: {
+		fontSize: 18, 
+		paddingLeft: 15, 
+	}, 
+	textDescriptionStyle: {
+		paddingLeft: 15, 
+	}
 }
 
 
