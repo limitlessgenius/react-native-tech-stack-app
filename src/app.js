@@ -26,14 +26,14 @@ export default App
 
 //probably we can't hook overall app to store but the nested containers
 //since App is exported to index for rendering
+
 //and this serves as the store part of redux and react redux without
 //dealing with any paticular data / only nesting integration of components and creation of store
 
 //Provider connects (linker library) created redux store that integrates all pieces of state4
 //To our react app. 
+
 //Our state is created by the unification of all the pieces of state (reducers)
 //Never mutate state but whole complete recreation each type triggered by the
 //Direction of our actions
-
-
 
