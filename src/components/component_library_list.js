@@ -3,12 +3,9 @@
 import React, { Component } from 'react'
 import { View, Text, FlatList } from 'react-native'
 
-// import { List, ListItem } from "react-native-elements";
-
 import { connect } from 'react-redux'
 
-import LibraryDetail from './component_library_detail'
-
+import { Card, CardSection } from './common'
 
 class LibraryList extends Component {
 
@@ -18,38 +15,43 @@ class LibraryList extends Component {
 		})
 	}
 
-	render() {
-
+	libraryItem({item}) {
 		return (
-			<View style={styles.libraryStyle}>
+
+			<Card>
+
+				<CardSection>
+					<Text>{item.title}</Text>
+				</CardSection>
+
+				<CardSection>
+					<Text>{item.description}</Text>
+				</CardSection>
+				
+			</Card>
+		)
+	}
+
+	render() {
+		return (
+			<View>
 				<FlatList 
 					data={this.libraryList()}
-					renderItem={
-						({item}) => <Text>{item.title}</Text>
-				}
+					renderItem={this.libraryItem}
 				/>
 			</View>
 		)	
 	}
 }
 
-const mapStateToProps = (state) => {
-	return { libraries: state.libraries}
+const mapStateToProps = state => {
+	// console.log('STATE', state)
+	return { libraries: state.libraries }
 }
+
+
 
 //Why item requires to be in {} even when data is a plain array?
-
-const styles = {
-	libraryStyle: {
-		height: 100,
-		width: 100, 
-	}, 
-	item: {
-	    padding: 10,
-	    fontSize: 18,
-	    height: 44,
-  	}
-}
 
 export default connect (mapStateToProps)(LibraryList)
 //second () calls the return func of the first
