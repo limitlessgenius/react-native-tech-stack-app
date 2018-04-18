@@ -33,14 +33,14 @@ class LibraryList extends Component {
 		
 		const info = [{name: "INPUT"}, {name: "OUTPUT"}]
 
-		console.log('DATA', info)
+		console.log('DATA', this.libraryList())
 
 		return (
 			<View style={styles.libraryStyle}>
 				<FlatList 
-					data={info}
+					data={this.libraryList()}
 					renderItem={
-						({item}) => <Text>{item.name}</Text>
+						({item}) => <Text>{item}</Text>
 				}
 				/>
 			</View>
@@ -51,6 +51,8 @@ class LibraryList extends Component {
 const mapStateToProps = (state) => {
 	return { libraries: state.libraries}
 }
+
+//Why item requires to be in {} even when data is a plain array?
 
 const styles = {
 	libraryStyle: {
