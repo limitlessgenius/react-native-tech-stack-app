@@ -12,35 +12,20 @@ import LibraryDetail from './component_library_detail'
 
 class LibraryList extends Component {
 
-
-
-	constructor(props){
-		super(props)
-		this.state = {
-			data: ["A", "B"]
-		}
-	}
-
-
-
 	libraryList() {
 		return this.props.libraries.map((library) => {
-			return library.title
+			return library
 		})
 	}
 
 	render() {
-		
-		const info = [{name: "INPUT"}, {name: "OUTPUT"}]
-
-		console.log('DATA', this.libraryList())
 
 		return (
 			<View style={styles.libraryStyle}>
 				<FlatList 
 					data={this.libraryList()}
 					renderItem={
-						({item}) => <Text>{item}</Text>
+						({item}) => <Text>{item.title}</Text>
 				}
 				/>
 			</View>
