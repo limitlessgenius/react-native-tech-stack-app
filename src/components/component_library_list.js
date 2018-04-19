@@ -9,7 +9,6 @@ class LibraryList extends Component {
 
 	constructor(props) {
 		super(props)
-		this.renderDescription = this.renderDescription.bind(this) 
 	}
 
 	libraryList() {
@@ -60,11 +59,12 @@ class LibraryList extends Component {
 	}
 } //WHY in renderItem DO I, and in generall, have to BIND THIS
 
-const mapStateToProps = state => {
-	// console.log('STATE', state)
+const mapStateToProps = (state) => {
+	//pending: externalize pre-processing logic for expanded
 	return { 
 		libraries: state.libraries, 
-		selectedLibraryID: state.selectedLibraryID
+		selectedLibraryID: state.selectedLibraryID, 
+
 	}
 }
 
