@@ -9,6 +9,7 @@ class LibraryList extends Component {
 
 	constructor(props) {
 		super(props)
+		this.renderDescription = this.renderDescription.bind(this) 
 	}
 
 	libraryList() {
@@ -17,11 +18,19 @@ class LibraryList extends Component {
 		})
 	}
 
+	renderDescription(itemID, itemDescription) {
+		if(itemID===this.props.selectedLibraryID) {
+			return(
+				<CardSection>
+					<Text style={styles.textDescriptionStyle}>{itemDescription}</Text>
+				</CardSection>
+			)
+		}
+	}
+
 	libraryItem({item}) {
 
 		const { title, id, description } = item
-
-		const { textTitleStyle } = styles
 
 		return (
 			<TouchableWithoutFeedback
@@ -31,10 +40,10 @@ class LibraryList extends Component {
 			>
 				<View>
 					<CardSection>
-						<Text style={textTitleStyle}>{title}</Text>
+						<Text style={styles.textTitleStyle}>{title}</Text>
 					</CardSection>
+					{this.renderDescription(id, description)}
 				</View>
-
 			</TouchableWithoutFeedback>
 		)
 	}
@@ -53,7 +62,10 @@ class LibraryList extends Component {
 
 const mapStateToProps = state => {
 	// console.log('STATE', state)
-	return { libraries: state.libraries }
+	return { 
+		libraries: state.libraries, 
+		selectedLibraryID: state.selectedLibraryID
+	}
 }
 
 const styles = {

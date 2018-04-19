@@ -1,12 +1,15 @@
 
-export default (state, action) => {
 
-	if(action.type === 'SELECT_LIBRARY') {
+//if undefined return null
+export default (state = null, action) => {
 
-		console.log('ACTION', action)
-	} 
-
-	return null
+	switch(action.type){
+		case 'SELECT_LIBRARY': 
+			return action.payload
+		default: 
+			return state
+			//last time state
+	}
 }
 
 // design action creator
